@@ -1,0 +1,19 @@
+# Virtual Environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Git folder
+.git/
+
+# IDE folders
+.idea/
+.vscode/
+
+# Environment files (should be passed at runtime)
+.env
+
+# SSL Certificate
+root.crt

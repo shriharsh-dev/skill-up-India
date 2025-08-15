@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      # The application.yaml uses http://localhost:9001 for the Python service.
+      # In Docker Compose, services can reach each other using their service name.
+      # We are overriding this property to point to our 'python-service' container.
+      - app.python.url=http://python-service:9001
+    networks:
+      - skillup-network
+
+  # Placeholder for the Python service mentioned in application.yaml
+  # You would need to create a Dockerfile for your Python application
+  # and replace this placeholder.
+  python-service:
+    image: python:3.9-slim
+    # command: ["your-python-app-command"] # Replace with the actual command
+    # build: ./path-to-python-app # Or build from a local Dockerfile
+    ports:
+      - "9001:9001"
+    networks:
+      - skillup-network
+    # A simple healthcheck to show it's running
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+
+networks:
+  skillup-network:
+    driver: bridge

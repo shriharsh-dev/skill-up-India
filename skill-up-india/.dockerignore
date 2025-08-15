@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+.vscode
+
+# Build artifacts
+target/
+pom.xml.bak
+
+# Maven wrapper files (not needed in final image)
+mvnw
+mvnw.cmd
+.mvn
+
+# Source code (not needed in final image)
+src
+
+# Docker files
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Other
+HELP.md
